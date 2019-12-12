@@ -1,0 +1,79 @@
+{
+  "name": "nx-gatsby",
+  "version": "0.0.0",
+  "description": "Nx plugin to enrich monorepo with great Gatsby.js",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "commit": "yarn git-cz",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E  HUSKY_GIT_PARAMS"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ],
+    "rules": {
+      "subject-case": [
+        2,
+        "never",
+        [
+          "start-case",
+          "pascal-case"
+        ]
+      ]
+    }
+  },
+  "release": {
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "package.json",
+            "CHANGELOG.md"
+          ],
+          "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+        }
+      ],
+      "@semantic-release/github"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/wgrabarek/nx-gatsby.git"
+  },
+  "keywords": [
+    "Nx",
+    "monorepo",
+    "Gatsby",
+    "builder"
+  ],
+  "author": "Wojciech Grabarek",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wgrabarek/nx-gatsby/issues"
+  },
+  "homepage": "https://github.com/wgrabarek/nx-gatsby#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^8.2.0",
+    "@commitlint/config-conventional": "^8.2.0",
+    "@commitlint/prompt": "^8.2.0",
+    "@semantic-release/changelog": "^3.0.6",
+    "@semantic-release/git": "^7.0.18",
+    "commitizen": "^4.0.3",
+    "husky": "^3.1.0",
+    "prettier": "^1.19.1",
+    "semantic-release": "^15.13.31",
+    "tslint": "^5.20.1",
+    "typescript": "^3.7.3"
+  }
+}

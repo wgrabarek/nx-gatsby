@@ -1,2 +1,2 @@
-# nx-gatsby-builder
-Gatsby builder (works on top of gatsby-cli), compatible with Nx extensible devtools
+# nx-gatsby
+Nx plugin to enrich monorepo with great Gatsby.js 
